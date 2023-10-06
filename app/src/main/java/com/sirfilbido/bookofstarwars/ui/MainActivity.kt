@@ -1,4 +1,4 @@
-package com.sirfilbido.bookofstarwars
+package com.sirfilbido.bookofstarwars.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

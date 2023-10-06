@@ -1,7 +1,7 @@
-package com.sirfilbido.bookofstarwars
+package com.sirfilbido.bookofstarwars.app
 
 import android.app.Application
-import com.sirfilbido.bookofstarwars.common.di.appModule
+import com.sirfilbido.bookofstarwars.app.di.appModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
