@@ -15,7 +15,7 @@ class CharacterRepositoryImpl : CharacterRepository, KoinComponent {
     override suspend fun getListCharacter(): List<CharacterResponse> {
         return try {
             val response = characterRemote.getAllCharacter()
-            response.result
+            response.results
         } catch (error: HttpException) {
             throw RemoteException("Unable to retrieve characters in SWApi")
         }
