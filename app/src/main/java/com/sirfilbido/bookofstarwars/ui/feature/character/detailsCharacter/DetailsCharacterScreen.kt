@@ -4,20 +4,10 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -27,23 +17,23 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.sirfilbido.bookofstarwars.R
 import com.sirfilbido.bookofstarwars.domain.model.Character
 import com.sirfilbido.bookofstarwars.ui.components.RowLabelValue
+import com.sirfilbido.bookofstarwars.ui.components.ScreenBoSW
 import com.sirfilbido.bookofstarwars.ui.feature.character.detailsCharacter.components.ShimmerDetailsCharacter
-import com.sirfilbido.bookofstarwars.ui.theme.CoruscantBlue
-import com.sirfilbido.bookofstarwars.ui.theme.DroidYellow
-import com.sirfilbido.bookofstarwars.ui.theme.GalaxyBlack
 import com.sirfilbido.bookofstarwars.ui.theme.UnityWhite
+import com.sirfilbido.bookofstarwars.utils.extensions.formatAsSentence
+import com.sirfilbido.bookofstarwars.utils.extensions.formatHeight
+import com.sirfilbido.bookofstarwars.utils.extensions.formatMass
+import com.sirfilbido.bookofstarwars.utils.extensions.isNotNA
+import com.sirfilbido.bookofstarwars.utils.extensions.normalize
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DetailCharacterScreen(navController: NavController, id: Int, name: String) {
 
@@ -55,45 +45,17 @@ fun DetailCharacterScreen(navController: NavController, id: Int, name: String) {
         scope.launch { viewModel.fetchCharacter(id) }
     }
 
-    Scaffold(
-        containerColor = CoruscantBlue,
-        topBar = {
-            TopAppBar(
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = GalaxyBlack,
-                    titleContentColor = DroidYellow
-                ),
-                title = {
-                    Text(
-                        text = name,
-                        fontSize = 18.sp,
-                        fontWeight = FontWeight.Bold
-                    )
-                },
-                navigationIcon = {
-                    IconButton(onClick = { navController.popBackStack() }) {
-                        Icon(
-                            imageVector = Icons.Filled.ArrowBack,
-                            tint = UnityWhite,
-                            contentDescription = null
-                        )
-                    }
-                },
-            )
-        },
-    ) { padding ->
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(padding)
-        ) {
+    ScreenBoSW(
+        navController = navController,
+        titleToolbar = name,
+        content = {
             if (character.id == 0) {
                 ShimmerDetailsCharacter()
             } else {
                 CardCharacter(character = character)
             }
         }
-    }
+    )
 }
 
 @Composable
@@ -130,36 +92,38 @@ fun CardCharacter(character: Character) {
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 RowLabelValue(
-                    stringResource(id = R.string.details_character_birth_year),
-                    character.birthYear
+                    label = stringResource(id = R.string.details_character_birth_year),
+                    value = character.birthYear.normalize()
                 )
                 RowLabelValue(
-                    stringResource(id = R.string.details_character_gender),
-                    character.gender ?: "Error"
+                    label = stringResource(id = R.string.details_character_gender),
+                    value = character.gender.normalize(),
+                    isShow = character.gender.isNotNA()
                 )
                 RowLabelValue(
-                    stringResource(id = R.string.details_character_homeworld),
-                    character.homeworld?.name ?: "Error"
+                    label = stringResource(id = R.string.details_character_homeworld),
+                    value = character.homeworld.name
                 )
                 RowLabelValue(
-                    stringResource(id = R.string.details_character_mass),
-                    character.mass.toString()
+                    label = stringResource(id = R.string.details_character_mass),
+                    value = character.mass.formatMass()
                 )
                 RowLabelValue(
-                    stringResource(id = R.string.details_character_height),
-                    character.height.toString()
+                    label = stringResource(id = R.string.details_character_height),
+                    value = character.height.formatHeight()
                 )
                 RowLabelValue(
-                    stringResource(id = R.string.details_character_skinColor),
-                    character.skinColor
+                    label = stringResource(id = R.string.details_character_skinColor),
+                    value = character.skinColor.normalize()
                 )
                 RowLabelValue(
-                    stringResource(id = R.string.details_character_hairColor),
-                    character.hairColor.toString()
+                    label = stringResource(id = R.string.details_character_hairColor),
+                    value = character.hairColor.formatAsSentence(),
+                    isShow = character.hairColor.formatAsSentence().isNotNA()
                 )
                 RowLabelValue(
-                    stringResource(id = R.string.details_character_eyeColor),
-                    character.eyeColor
+                    label = stringResource(id = R.string.details_character_eyeColor),
+                    value = character.eyeColor.normalize()
                 )
             }
         }
