@@ -8,4 +8,16 @@
     <string name="list_character_gender">Gender:</string>
     <string name="list_character_undefined">Undefined</string>
 
+    //Details Character
+    <string name="details_character_name">Name:</string>
+    <string name="details_character_height">Height:</string>
+    <string name="details_character_mass">Mass:</string>
+    <string name="details_character_hairColor">Hair color:</string>
+    <string name="details_character_skinColor">Skin color:</string>
+    <string name="details_character_eyeColor">Eye color:</string>
+    <string name="details_character_birth_year">Year of birth:</string>
+    <string name="details_character_gender">Gender:</string>
+    <string name="details_character_homeworld">Planet:</string>
+    <string name="details_character_undefined">Undefined</string>
+
 </resources>
