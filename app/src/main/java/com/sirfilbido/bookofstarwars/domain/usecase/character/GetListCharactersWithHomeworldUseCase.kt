@@ -1,8 +1,9 @@
 package com.sirfilbido.bookofstarwars.domain.usecase.character
 
 import com.sirfilbido.bookofstarwars.data.remote.character.response.CharacterResponse
-import com.sirfilbido.bookofstarwars.domain.repository.character.CharacterRepository
 import com.sirfilbido.bookofstarwars.domain.model.CharacterListWithHomeworld
+import com.sirfilbido.bookofstarwars.domain.repository.character.CharacterRepository
+import com.sirfilbido.bookofstarwars.domain.usecase.character.mapper.toCharacterListWithHomeworld
 import com.sirfilbido.bookofstarwars.domain.usecase.planet.GetPlanetByIdUseCase
 import com.sirfilbido.bookofstarwars.utils.extensions.getIdUrl
 import org.koin.core.component.KoinComponent
@@ -25,25 +26,12 @@ class GetListCharactersWithHomeworldUseCase : KoinComponent {
         characterResponse.let { listCharacterResponse ->
             val list = mutableListOf<CharacterListWithHomeworld>()
 
-            listCharacterResponse.forEach { list.add(characterResponseToModel(it)) }
+            listCharacterResponse.forEach { characterResponse ->
+                val planet = getPlanetByIdUseCase(characterResponse.homeworld.getIdUrl())
+
+                list.add(characterResponse.toCharacterListWithHomeworld(planet))
+            }
 
             list
-        }
-
-    private suspend fun characterResponseToModel(
-        characterResponse: CharacterResponse
-    ): CharacterListWithHomeworld =
-
-        characterResponse.let {
-
-            val planet = getPlanetByIdUseCase(it.homeworld.getIdUrl())
-
-            CharacterListWithHomeworld(
-                id = it.url.getIdUrl(),
-                name = it.name,
-                birthYear = it.birthYear,
-                gender = it.gender,
-                homeworld = planet,
-            )
         }
 }

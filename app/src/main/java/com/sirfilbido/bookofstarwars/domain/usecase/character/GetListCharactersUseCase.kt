@@ -1,9 +1,9 @@
 package com.sirfilbido.bookofstarwars.domain.usecase.character
 
 import com.sirfilbido.bookofstarwars.data.remote.character.response.CharacterResponse
-import com.sirfilbido.bookofstarwars.domain.repository.character.CharacterRepository
 import com.sirfilbido.bookofstarwars.domain.model.CharacterList
-import com.sirfilbido.bookofstarwars.utils.extensions.getIdUrl
+import com.sirfilbido.bookofstarwars.domain.repository.character.CharacterRepository
+import com.sirfilbido.bookofstarwars.domain.usecase.character.mapper.toCharacterList
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
@@ -19,18 +19,10 @@ class GetListCharactersUseCase : KoinComponent {
         characterResponse.let { listCharacterResponse ->
             val list = mutableListOf<CharacterList>()
 
-            listCharacterResponse.forEach { list.add(characterResponseToModel(it)) }
+            listCharacterResponse.forEach { characterResponse ->
+                list.add(characterResponse.toCharacterList())
+            }
 
             list
-        }
-
-    private fun characterResponseToModel(characterResponse: CharacterResponse): CharacterList =
-        characterResponse.let {
-            CharacterList(
-                id = it.url.getIdUrl(),
-                name = it.name,
-                birthYear = it.birthYear,
-                gender = it.gender,
-            )
         }
 }
