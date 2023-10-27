@@ -10,7 +10,7 @@ data class Planet(
     val gravity: String,
     val terrain: String,
     val surfaceWater: Int,
-    val population: Int,
+    val population: Long,
     val url: String,
 )
 
