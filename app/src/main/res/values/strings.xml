@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Book Of Star Wars</string>
+
+    //List Character
+    <string name="list_character_toolbar_title">Book Of Star Wars</string>
+    <string name="list_character_name">Name:</string>
+    <string name="list_character_birth_year">Year of birth:</string>
+    <string name="list_character_gender">Gender:</string>
+    <string name="list_character_undefined">Undefined</string>
+
 </resources>
