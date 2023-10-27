@@ -8,6 +8,7 @@ import com.sirfilbido.bookofstarwars.domain.usecase.character.GetCharacterByIdUs
 import com.sirfilbido.bookofstarwars.domain.usecase.character.GetListCharactersUseCase
 import com.sirfilbido.bookofstarwars.domain.usecase.character.GetListCharactersWithHomeworldUseCase
 import com.sirfilbido.bookofstarwars.domain.usecase.planet.GetPlanetByIdUseCase
+import org.koin.core.module.dsl.factoryOf
 import org.koin.dsl.module
 
 fun domainModule() = arrayListOf(
@@ -17,16 +18,16 @@ fun domainModule() = arrayListOf(
 )
 
 private val repositoryModule = module {
-    single<CharacterRepository> { CharacterRepositoryImpl() }
-    single<PlanetRepository> { PlanetRepositoryImpl() }
+    factory<CharacterRepository> { CharacterRepositoryImpl() }
+    factory<PlanetRepository> { PlanetRepositoryImpl() }
 }
 
 private val useCaseCharacterModule = module {
-    factory { GetCharacterByIdUseCase() }
-    factory { GetListCharactersUseCase() }
-    factory { GetListCharactersWithHomeworldUseCase() }
+    factoryOf(::GetCharacterByIdUseCase)
+    factoryOf(::GetListCharactersUseCase)
+    factoryOf(::GetListCharactersWithHomeworldUseCase)
 }
 
 private val useCasePlanetModule = module {
-    factory { GetPlanetByIdUseCase() }
+    factoryOf(::GetPlanetByIdUseCase)
 }
