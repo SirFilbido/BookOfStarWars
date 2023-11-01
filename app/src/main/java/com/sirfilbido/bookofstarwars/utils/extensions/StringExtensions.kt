@@ -1,5 +1,7 @@
 package com.sirfilbido.bookofstarwars.utils.extensions
 
+import android.net.Uri
+
 fun String.getIdUrl(): Int {
     val regex = Regex("""/(\d+)/$""")
 
@@ -25,4 +27,12 @@ fun String.isNA(): Boolean {
 
 fun String.isNotNA(): Boolean {
     return !this.isNA()
+}
+
+fun String?.getPageFromUrl(): Int? {
+    return if (this != null) {
+        val uri = Uri.parse(this)
+        val nextPageQuery = uri.getQueryParameter("page")
+        nextPageQuery?.toInt()
+    } else null
 }

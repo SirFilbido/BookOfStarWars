@@ -69,6 +69,11 @@ dependencies {
     implementation("androidx.compose.material3:material3:1.1.2")
     implementation ("com.google.accompanist:accompanist-navigation-animation:0.31.5-beta")
 
+    // Paging Compose
+    val pagingVersion = "3.2.1"
+    implementation ("androidx.paging:paging-runtime-ktx:$pagingVersion")
+    implementation ("androidx.paging:paging-compose:$pagingVersion")
+
 //    implementation("io.coil-kt:coil-compose:2.4.0")
 
     //Retrofit

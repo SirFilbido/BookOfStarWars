@@ -2,6 +2,7 @@ package com.sirfilbido.bookofstarwars.data.repository.character
 
 import android.os.RemoteException
 import com.sirfilbido.bookofstarwars.data.remote.character.CharacterRemote
+import com.sirfilbido.bookofstarwars.data.remote.character.response.ApiResponse
 import com.sirfilbido.bookofstarwars.data.remote.character.response.CharacterResponse
 import com.sirfilbido.bookofstarwars.domain.repository.character.CharacterRepository
 import org.koin.core.component.KoinComponent
@@ -12,10 +13,9 @@ class CharacterRepositoryImpl : CharacterRepository, KoinComponent {
 
     private val characterRemote: CharacterRemote by inject()
 
-    override suspend fun getListCharacter(): List<CharacterResponse> {
+    override suspend fun getListCharacter(page: Int): ApiResponse {
         return try {
-            val response = characterRemote.getAllCharacter()
-            response.results
+            characterRemote.getAllCharacter(page)
         } catch (error: HttpException) {
             throw RemoteException("Unable to retrieve characters in SWApi")
         }
