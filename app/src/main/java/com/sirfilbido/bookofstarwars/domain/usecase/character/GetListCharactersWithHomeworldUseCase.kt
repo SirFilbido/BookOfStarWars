@@ -3,7 +3,7 @@ package com.sirfilbido.bookofstarwars.domain.usecase.character
 import com.sirfilbido.bookofstarwars.data.remote.character.response.CharacterResponse
 import com.sirfilbido.bookofstarwars.domain.model.CharacterListWithHomeworld
 import com.sirfilbido.bookofstarwars.domain.repository.character.CharacterRepository
-import com.sirfilbido.bookofstarwars.domain.usecase.character.mapper.toCharacterListWithHomeworld
+import com.sirfilbido.bookofstarwars.data.mappers.character.toCharacterListWithHomeworld
 import com.sirfilbido.bookofstarwars.domain.usecase.planet.GetPlanetByIdUseCase
 import com.sirfilbido.bookofstarwars.utils.extensions.getIdUrl
 import org.koin.core.component.KoinComponent

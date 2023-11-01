@@ -1,4 +1,4 @@
-package com.sirfilbido.bookofstarwars.domain.usecase.planet.mapper
+package com.sirfilbido.bookofstarwars.data.mappers.planet
 
 import com.sirfilbido.bookofstarwars.character.service.response.PlanetResponse
 import com.sirfilbido.bookofstarwars.domain.model.Planet

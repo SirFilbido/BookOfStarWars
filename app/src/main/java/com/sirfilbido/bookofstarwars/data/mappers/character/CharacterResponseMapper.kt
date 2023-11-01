@@ -1,4 +1,4 @@
-package com.sirfilbido.bookofstarwars.domain.usecase.character.mapper
+package com.sirfilbido.bookofstarwars.data.mappers.character
 
 import com.sirfilbido.bookofstarwars.data.remote.character.response.CharacterResponse
 import com.sirfilbido.bookofstarwars.domain.model.Character

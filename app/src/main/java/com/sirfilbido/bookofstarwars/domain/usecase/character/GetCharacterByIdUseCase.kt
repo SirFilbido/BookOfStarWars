@@ -2,7 +2,7 @@ package com.sirfilbido.bookofstarwars.domain.usecase.character
 
 import com.sirfilbido.bookofstarwars.domain.model.Character
 import com.sirfilbido.bookofstarwars.domain.repository.character.CharacterRepository
-import com.sirfilbido.bookofstarwars.domain.usecase.character.mapper.toCharacter
+import com.sirfilbido.bookofstarwars.data.mappers.character.toCharacter
 import com.sirfilbido.bookofstarwars.domain.usecase.planet.GetPlanetByIdUseCase
 import com.sirfilbido.bookofstarwars.utils.extensions.getIdUrl
 import org.koin.core.component.KoinComponent
