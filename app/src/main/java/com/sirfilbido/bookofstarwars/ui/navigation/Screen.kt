@@ -1,6 +1,7 @@
 package com.sirfilbido.bookofstarwars.ui.navigation
 
 sealed class Screen(val route: String) {
+    //Character
     object ListCharacterScreen : Screen("list_character_screen")
     object DetailCharacterScreen : Screen("detail_character_screen")
 
