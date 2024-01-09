@@ -27,13 +27,13 @@ Como o nosso universo esse projeto tem a ideia de se expandir e receber algumas 
 ## Galeria de imagens
 https://github.com/SirFilbido/BookOfStarWars/assets/25982091/672f7ff5-5509-447e-953c-328933146c7f
 
+### Lista de personagens
 ---
 
-### - Lista de personagens
 ![list](https://github.com/SirFilbido/BookOfStarWars/assets/25982091/87f5b163-e37f-4b9a-a9bc-b319b4c7bef6)
 
+### Detalhes do personagem
 ---
 
-### - Detalhes do personagem
 ![characterLoading](https://github.com/SirFilbido/BookOfStarWars/assets/25982091/2ff970d2-3e72-4105-9172-36007e786c4e)
 ![character](https://github.com/SirFilbido/BookOfStarWars/assets/25982091/26ea176c-ba3e-41b3-a289-ba1761c975fb)
