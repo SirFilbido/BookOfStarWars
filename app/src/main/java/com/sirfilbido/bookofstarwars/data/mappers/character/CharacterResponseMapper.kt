@@ -6,6 +6,7 @@ import com.sirfilbido.bookofstarwars.domain.model.CharacterList
 import com.sirfilbido.bookofstarwars.domain.model.CharacterListWithHomeworld
 import com.sirfilbido.bookofstarwars.domain.model.Planet
 import com.sirfilbido.bookofstarwars.utils.extensions.getIdUrl
+import com.sirfilbido.bookofstarwars.utils.extensions.normalizeInt
 import com.sirfilbido.bookofstarwars.utils.extensions.stringToList
 
 fun CharacterResponse.toCharacter(planet: Planet): Character =
@@ -13,8 +14,8 @@ fun CharacterResponse.toCharacter(planet: Planet): Character =
         Character(
             id = it.url.getIdUrl(),
             name = it.name,
-            height = it.height.toInt(),
-            mass = it.mass.toInt(),
+            height = if (it.height != "unknown") it.height.normalizeInt() else 0,
+            mass = if (it.mass != "unknown") it.mass.normalizeInt() else 0,
             hairColor = it.hairColor.stringToList(),
             skinColor = it.skinColor,
             eyeColor = it.eyeColor,
