@@ -17,7 +17,7 @@ class GetListCharactersWithHomeworldUseCase : KoinComponent {
 
     //TODO Adicionar paginação
     suspend operator fun invoke(): List<CharacterListWithHomeworld> =
-        listCharacterResponseToModel(repository.getListCharacter())
+        listCharacterResponseToModel(repository.getListCharacter(1).results)
 
     private suspend fun listCharacterResponseToModel(
         characterResponse: List<CharacterResponse>

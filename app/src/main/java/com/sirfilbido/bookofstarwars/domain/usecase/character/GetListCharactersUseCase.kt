@@ -16,11 +16,9 @@ class GetListCharactersUseCase {
     operator fun invoke(): Flow<PagingData<CharacterList>> = Pager(
         config = PagingConfig(
             pageSize = 10,
-            //            prefetchDistance = 20
+            // prefetchDistance = 20
         ),
-    ) {
-        CharacterPagingSource()
-    }
+    ) { CharacterPagingSource() }
         .flow
         .map { value: PagingData<CharacterResponse> ->
             value.map { characterList: CharacterResponse ->

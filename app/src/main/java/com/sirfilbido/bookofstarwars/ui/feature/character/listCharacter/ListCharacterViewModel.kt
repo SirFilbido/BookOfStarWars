@@ -7,14 +7,18 @@ import androidx.paging.cachedIn
 import com.sirfilbido.bookofstarwars.domain.model.CharacterList
 import com.sirfilbido.bookofstarwars.domain.usecase.character.GetListCharactersUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
-class ListCharacterViewModel(
-    private val useCase: GetListCharactersUseCase
-) : ViewModel() {
+class ListCharacterViewModel : KoinComponent, ViewModel() {
 
-    private val _listCharacterState: MutableStateFlow<PagingData<CharacterList>> = MutableStateFlow(PagingData.empty())
-    val listCharacterState = _listCharacterState
+    private val useCase: GetListCharactersUseCase by inject()
+
+    private val _listCharacterState: MutableStateFlow<PagingData<CharacterList>> =
+        MutableStateFlow(PagingData.empty())
+    val listCharacterState = _listCharacterState.asStateFlow()
 
 
     init {

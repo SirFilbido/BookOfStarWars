@@ -1,6 +1,7 @@
 package com.sirfilbido.bookofstarwars.utils.extensions
 
 import android.net.Uri
+import kotlin.math.roundToInt
 
 fun String.getIdUrl(): Int {
     val regex = Regex("""/(\d+)/$""")
@@ -16,6 +17,8 @@ fun String.stringToList(): List<String> {
 fun String.normalize(): String {
     return if (this.uppercase() == "N/A") {
         "Not applicable"
+    } else if (this.uppercase() == "UNKNOWN") {
+        "Unknown"
     } else {
         this.replaceFirstChar { if (it.isLowerCase()) it.titlecase() else it.toString() }
     }
@@ -35,4 +38,8 @@ fun String?.getPageFromUrl(): Int? {
         val nextPageQuery = uri.getQueryParameter("page")
         nextPageQuery?.toInt()
     } else null
+}
+
+fun String.normalizeInt(): Int {
+    return this.replace(",", "").toDouble().roundToInt()
 }
