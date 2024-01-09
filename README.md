@@ -7,17 +7,17 @@ Foi aplicado muitas bibliotecas que estão estão consolidadas no mercado ou que
 Como o nosso universo esse projeto tem a ideia de se expandir e receber algumas implementações como finalidade de experimentação e até variações de outras bibliotecas.
 
 ## Tecnologias em uso
-* Jetpack Compose
-* Koin
+* Jetpack Compose - https://developer.android.com/jetpack/compose
+* Kotlin - https://kotlinlang.org/
 * MVVM + Clean Architecture
 * API Base: https://swapi.dev
 * Images de personagens: https://github.com/vieraboschkova/swapi-gallery
-* Coil
-* Paging3
-* Koin
-* Retrofit
-* Gson
-* Coroutines
+* Coil - https://coil-kt.github.io/coil/
+* Paging v3 - https://developer.android.com/topic/libraries/architecture/paging/v3-overview
+* Koin - https://insert-koin.io/
+* Retrofit - https://square.github.io/retrofit/
+* Gson - https://github.com/google/gson
+* Coroutines - https://kotlinlang.org/docs/coroutines-overview.html
 
 ## Funcionalides
 * Tela de listagem de personagens - Com informaç
