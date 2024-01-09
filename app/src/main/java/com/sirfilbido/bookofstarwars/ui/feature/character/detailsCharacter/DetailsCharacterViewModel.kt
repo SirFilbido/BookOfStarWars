@@ -7,10 +7,12 @@ import com.sirfilbido.bookofstarwars.domain.usecase.character.GetCharacterByIdUs
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
-class DetailsCharacterViewModel (
-    private val useCase: GetCharacterByIdUseCase
-) : ViewModel() {
+class DetailsCharacterViewModel : KoinComponent, ViewModel() {
+
+    private val useCase: GetCharacterByIdUseCase by inject()
 
     private val _characterState = MutableStateFlow(Character())
     val characterState = _characterState.asStateFlow()
