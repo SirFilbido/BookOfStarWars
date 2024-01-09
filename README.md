@@ -12,6 +12,7 @@ Como o nosso universo esse projeto tem a ideia de se expandir e receber algumas 
 * MVVM + Clean Architecture
 * API Base: https://swapi.dev
 * Images de personagens: https://github.com/vieraboschkova/swapi-gallery
+* Coil
 * Paging3
 * Koin
 * Retrofit
