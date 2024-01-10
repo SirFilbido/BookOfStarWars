@@ -23,7 +23,8 @@
   - [Lista de personagens](#id05.01)
   - [Detalhes do personagem](#id05.02)
 - [Clonagem e instalação](#id06)
-- [Autoria](#id07)
+- [Guia de branches](#id07)
+- [Autoria](#id08)
 
 
 ## Sobre <a name="id01"></a>
@@ -83,7 +84,7 @@ https://github.com/SirFilbido/BookOfStarWars/assets/25982091/672f7ff5-5509-447e-
 ![character](https://github.com/SirFilbido/BookOfStarWars/assets/25982091/26ea176c-ba3e-41b3-a289-ba1761c975fb)
 
 
-# Clonagem e instalação <a name="id06"></a>
+## Clonagem e instalação <a name="id06"></a>
 
 Clone este repositório usando o comando:
 
@@ -91,10 +92,19 @@ Clone este repositório usando o comando:
 git clone https://github.com/SirFilbido/BookOfStarWars.git
 ```
 
-Inicie o projeto com o Android Studio:
+Abra o projeto com o Android Studio e espere baixar todas as dependencias.
+Crie um emulador ou conecte o seu celular Android ao computador.
+Clique em Run 'app'
 
 
-## Autoria <a name="id07"></a>
+## Guia de branches <a name="id07"></a>
+
+Em um projeto normal eu uso, e recomendo usar, o conceito do [GitFlow](https://www.alura.com.br/artigos/git-flow-o-que-e-como-quando-utilizar). 
+Nesse caso vou usar uma oganização diferente para separar em pastas em "assuntos" e as branches em versões desses assuntos. 
+Dessa forma da para ter uma a linha de evolução e histórico de troca de tecnologia, tipo Retrofit para Ktor.
+
+
+## Autoria <a name="id08"></a>
 
 <h3 align='center'> @SirFilbido • Desenvolvedor mobile </h3>
 
